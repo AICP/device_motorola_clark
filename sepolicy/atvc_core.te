@@ -1,0 +1,10 @@
+type atvc_core, domain;
+type atvc_core_exec, exec_type, file_type;
+init_daemon_domain(atvc_core)
+
+allow atvc_core pds_file:dir r_dir_perms;
+allow atvc_core atvc_core_device:chr_file rw_file_perms;
+allow atvc_core persist_file:dir search;
+
+unix_socket_connect(atvc_core, property, init)
+allow atvc_core atvc_prop:property_service set;

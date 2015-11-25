@@ -161,24 +161,33 @@ BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    atfwd.te \
-    file.te \
-    device.te \
     adspd.te \
+    atfwd.te \
+    atvc.te \
+    atvc_core.te\
     batt_health.te \
     bluetooth.te \
-    wcnss_filter.te \
+    device.te \
+    file.te \
     file_contexts \
     healthd.te \
     init.te \
     init_shell.te \
+    mediaserver.te \
+    mmi-boot-sh.te \
     mm-qcamerad.te \
+    motosh.te \
     qmuxd.te \
+    property.te \
+    property_contexts \
     rild.te \
     rmt_storage.te \
     sysinit.te \
     system_server.te \
-    vold.te
+    ueventd.te \
+    usb_uicc_daemon.te\
+    vold.te \
+    wcnss_filter.te
 
 # Time services
 # BOARD_USES_QC_TIME_SERVICES := true

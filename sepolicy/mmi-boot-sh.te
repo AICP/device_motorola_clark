@@ -1,0 +1,15 @@
+type mmi-boot-sh, domain;
+type mmi-boot-sh_exec, exec_type, file_type;
+init_daemon_domain(mmi-boot-sh)
+
+allow mmi-boot-sh self:capability { sys_module dac_override };
+
+allow mmi-boot-sh block_device:dir r_dir_perms;
+allow mmi-boot-sh pds_file:dir r_dir_perms;
+allow mmi-boot-sh pds_file:file r_file_perms;
+allow mmi-boot-sh shell_exec:file r_file_perms;
+allow mmi-boot-sh system_file:file x_file_perms;
+allow mmi-boot-sh utags_block_device:blk_file r_file_perms;
+
+unix_socket_connect(mmi-boot-sh, property, init)
+allow mmi-boot-sh mmi-boot-sh_prop:property_service set;
