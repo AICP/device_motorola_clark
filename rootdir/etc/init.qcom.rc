@@ -474,7 +474,7 @@ service ril-daemon3 /system/bin/rild -c 3
     disabled
     group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
 
-service rild2-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
+service rild2-wrapper /system/bin/sh /init.qcom.ril.sh
     class late_start
     user root
     group root
