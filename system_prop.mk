@@ -31,7 +31,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
-    rild.libargs=-d /dev/smd0 \
+    rild.libargs=-d/dev/smd0 \
     ro.use_data_netmgrd=true \
     ro.data.large_tcp_window_size=true \
     persist.data.mode=concurrent \
