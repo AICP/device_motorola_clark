@@ -105,6 +105,7 @@ vendor/lib/libbtnv.so
 vendor/lib/libbt-vendor.so
 
 # Camera
+bin/mediaserver
 bin/mm-qcamera-daemon
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
