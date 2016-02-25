@@ -12,8 +12,8 @@ on moto-charger
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
     write /sys/module/msm_thermal/parameters/enabled Y
-    write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/governor "bw_hwmon"
-    write /sys/class/devfreq/qcom,cpubw.26/governor "bw_hwmon"
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor "bw_hwmon"
+    write /sys/class/devfreq/qcom,cpubw.27/governor "bw_hwmon"
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
     setprop sys.usb.config charging
     start charge_only_mode
@@ -21,6 +21,8 @@ on moto-charger
     start thermanager
 
 on enable-low-power
+    stop perfd
+    write /sys/devices/system/cpu/cpu0/online 1
     write /proc/sys/kernel/sched_boost 1
 
     # HMP scheduler load tracking settings
@@ -65,10 +67,10 @@ on enable-low-power
     write /sys/module/msm_performance/parameters/cpu_max_freq "4:960000 5:960000"
 
     # disable bcl hotplug to switch governor
-    write /sys/devices/soc.0/qcom,bcl.62/mode "disable"
-    write /sys/devices/soc.0/qcom,bcl.62/hotplug_mask 0
-    write /sys/devices/soc.0/qcom,bcl.62/hotplug_soc_mask 0
-    write /sys/devices/soc.0/qcom,bcl.62/mode "enable"
+    write /sys/devices/soc.0/qcom,bcl.66/mode "disable"
+    write /sys/devices/soc.0/qcom,bcl.66/hotplug_mask 0
+    write /sys/devices/soc.0/qcom,bcl.66/hotplug_soc_mask 0
+    write /sys/devices/soc.0/qcom,bcl.66/mode "enable"
 
     # configure governor settings for little cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
@@ -106,10 +108,10 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 384000
 
     # re-enable BCL hotplug
-    write /sys/devices/soc.0/qcom,bcl.62/mode "disable"
-    write /sys/devices/soc.0/qcom,bcl.62/hotplug_mask 192
-    write /sys/devices/soc.0/qcom,bcl.62/hotplug_soc_mask 240
-    write /sys/devices/soc.0/qcom,bcl.62/mode "enable"
+    write /sys/devices/soc.0/qcom,bcl.66/mode "disable"
+    write /sys/devices/soc.0/qcom,bcl.66/hotplug_mask 192
+    write /sys/devices/soc.0/qcom,bcl.66/hotplug_soc_mask 240
+    write /sys/devices/soc.0/qcom,bcl.66/mode "enable"
 
     # Configure foreground and background cpuset
     write /dev/cpuset/foreground/cpus 0-5
@@ -149,5 +151,5 @@ on class_start:late_start
 on property:init.svc.recovery=running
     trigger enable-low-power
 
-on property:dev.bootcomplete=1
+on property:sys.bootcomplete=1
     setprop sys.io.scheduler "bfq"
