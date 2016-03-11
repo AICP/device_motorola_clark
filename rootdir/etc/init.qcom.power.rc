@@ -145,5 +145,5 @@ on enable-low-power
     rm /data/system/perfd/default_values
     start perfd
 
-on property:sys.bootcomplete=1
+on property:sys.boot_completed=1
     trigger enable-low-power
