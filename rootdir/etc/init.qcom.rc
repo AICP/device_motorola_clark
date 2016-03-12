@@ -569,31 +569,8 @@ service motosh /system/bin/motosh boot
     group compass misc input mot_tcmd
     oneshot
 
-service qcom-c_core-sh /system/bin/sh /init.qcom.class_core.sh
-    class core
-    user root
-    oneshot
-
-service qcom-c_main-sh /system/bin/sh /init.class_main.sh
-    class main
-    user radio
-    group radio
-    oneshot
-
 service qcom-sh /system/bin/sh /init.qcom.sh
     class late_start
-    user root
-    oneshot
-
-service mmi-boot-sh /init.mmi.boot.sh
-    seclabel u:r:mmi_boot:s0
-    class core
-    user root
-    group root system mot_tcmd
-    oneshot
-
-service mmi-touch-sh /system/bin/init.mmi.touch.sh synaptics
-    class core
     user root
     oneshot
 

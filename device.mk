@@ -132,14 +132,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
 PRODUCT_PACKAGES += \
-    init.class_main.sh \
     fstab.qcom \
-    init.mmi.boot.sh \
     init.mmi.usb.rc \
     init.qcom.rc \
     init.qcom.power.rc \
-    init.mmi.block_perm.sh \
-    init.qcom.class_core.sh \
     init.qcom.sh \
     ueventd.qcom.rc
 
