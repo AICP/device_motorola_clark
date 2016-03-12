@@ -22,12 +22,25 @@ on moto-charger
 
 on enable-low-power
     stop perfd
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /proc/sys/kernel/sched_boost 1
 
-    # HMP scheduler load tracking settings
+    # Enable sched boost
+    write /proc/sys/kernel/sched_boost 1
     write /proc/sys/kernel/sched_window_stats_policy 3
     write /proc/sys/kernel/sched_ravg_hist_size 3
+    write /proc/sys/kernel/sched_migration_fixup 1
+    write /proc/sys/kernel/sched_upmigrate 95
+    write /proc/sys/kernel/sched_downmigrate 85
+    write /proc/sys/kernel/sched_freq_inc_notify 400000
+    write /proc/sys/kernel/sched_freq_dec_notify 400000
+    write /proc/sys/kernel/sched_small_task 60
+
+
+    # Bring both clusters online
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu4/online 1
+
+    # Disable thermal control
+    write /sys/module/msm_thermal/core_control/enabled 0
 
     # HMP Background migration
     write /proc/sys/kernel/sched_small_task 60
@@ -72,40 +85,44 @@ on enable-low-power
     write /sys/devices/soc.0/qcom,bcl.66/hotplug_soc_mask 0
     write /sys/devices/soc.0/qcom,bcl.66/mode "enable"
 
-    # configure governor settings for little cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
+
+    # Setup Little interactive settings
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay 19000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 95
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1248000
-
-    # Disable io_is_busy
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 85
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 80000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
 
-    # online CPU4
-    write /sys/devices/system/cpu/cpu4/online 1
-
-    # configure governor settings for big cluster
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
+    # Setup Big interactive settings
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_migration_notif 1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay "19000 1400000:39000 1700000:19000"
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load 95
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate 20000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq 1248000
-
-    # Disable io_is_busy
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy 0
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "85 1500000:90 1800000:70"
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 80000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 384000
+
+    # Enable thermal core
+    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/module/msm_thermal/parameters/enabled Y
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor "simple_ondemand"
+    write /sys/class/devfreq/qcom,gpubw.19/governor "simple_ondemand"
+    write /sys/class/devfreq/qcom,cpubw.27/governor "simple_ondemand"
+
+    # Enable rps static configuration
+    write /sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus 6
 
     # re-enable BCL hotplug
     write /sys/devices/soc.0/qcom,bcl.66/mode "disable"
@@ -119,28 +136,16 @@ on enable-low-power
     write /dev/cpuset/background/cpus 0
     write /dev/cpuset/system-background/cpus 0-3
 
-    # enable LPM
+    # allow CPUs to go in deeper idle state than C0
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
 
-    # Restore CPU 4 max freq from msm_performance
-    write /sys/module/msm_performance/parameters/cpu_max_freq "4:4294967295 5:4294967295"
-
-    # input boost configuration
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1248000 1:1248000 2:1248000 3:1248000 4:1248000 5:1248000"
+    # Available Freqs in stock kernel
+    # Little: 384000 460800 600000 672000 787200 864000 960000 1248000 1440000
+    # Big: 384000 480000 633600 768000 864000 960000 1248000 1344000 1440000 1536000 1632000 1689600 1824000
+    write /sys/module/cpu_boost/parameters/boost_ms 20
+    write /sys/module/cpu_boost/parameters/sync_threshold 960000
+    write /sys/module/cpu_boost/parameters/input_boost_freq 0:1248000
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
-
-    # Setting b.L scheduler parameters
-    write /proc/sys/kernel/sched_migration_fixup 1
-    write /proc/sys/kernel/sched_upmigrate 95
-    write /proc/sys/kernel/sched_downmigrate 85
-    write /proc/sys/kernel/sched_freq_inc_notify 400000
-    write /proc/sys/kernel/sched_freq_dec_notify 400000
-
-    # Enable rps static configuration
-    write /sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus 6
-    write /sys/class/devfreq/qcom,cpubw.27/governor "bw_hwmon"
-    write /sys/class/devfreq/qcom,gpubw.19/governor "bw_hwmon"
-    write /sys/class/devfreq/qcom,mincpubw.28/governor "cpufreq"
 
     rm /data/system/perfd/default_values
     start perfd
