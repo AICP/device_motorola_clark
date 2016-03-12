@@ -239,6 +239,10 @@
 # SSR devices
 /dev/subsys_*         0640   system     system
 
+# Sensors
+/persist/sensors          0775   system     root
+/persist/sensors/sensors_settings   0664   system   root
+
 # Moto Sensorhub Sensors
 /dev/motosh               0660   system     compass
 /dev/motosh_as            0660   compass    compass
