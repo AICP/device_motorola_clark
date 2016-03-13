@@ -257,6 +257,7 @@ vendor/lib/libchromatix_ov5693_video.so
 bin/msm_irqbalance
 bin/perfd
 vendor/lib/libqti-perfd-client.so
+vendor/lib/libthermalclient.so
 
 # DM/Sprint
 -app/DMConfigUpdateLight/DMConfigUpdateLight.apk
