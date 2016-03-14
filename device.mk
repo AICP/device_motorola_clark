@@ -208,8 +208,7 @@ PRODUCT_COPY_FILES += \
 
 # CMActions
 PRODUCT_PACKAGES += \
-    CMActions \
-    libjni_CMActions_32
+    CMActions
 
 # Wifi Firmware
 PRODUCT_COPY_FILES += \
