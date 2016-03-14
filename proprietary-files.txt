@@ -113,6 +113,8 @@ etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw
 etc/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw
+etc/permissions/com.motorola.camera.xml
+etc/permissions/com.motorola.gallery.xml
 lib/hw/camera.msm8992.so
 lib/libmot_lux_standardization.so
 lib/libadvalgcore.so
@@ -425,7 +427,6 @@ etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/com.motorola.motosignature.xml
-etc/permissions/com.motorola.camera.xml
 framework/com.motorola.motosignature.jar
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
