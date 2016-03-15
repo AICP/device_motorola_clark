@@ -164,6 +164,10 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
+# Power
+TARGET_POWERHAL_VARIANT := qcom
+TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 
