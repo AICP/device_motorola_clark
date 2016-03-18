@@ -42,3 +42,4 @@
 		<device name="SND_DEVICE_IN_HEADSET_MIC_AEC" acdb_id="47"/>
 	</acdb_ids>
 </audio_platform_info>
+
