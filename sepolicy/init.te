@@ -12,3 +12,4 @@ allow init hwrev_data_file:file append;
 allow init sysfs_lowmemorykiller:file getattr;
 allow init sysfs_light:file setattr;
 allow init sysfs_power:file setattr;
+allow init sysfs_dt2w:file setattr;
