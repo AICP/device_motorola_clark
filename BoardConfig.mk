@@ -42,14 +42,10 @@ BOARD_RAMDISK_OFFSET     := 0x01000000
 
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 
-# GPS
-TARGET_GPS_HAL_PATH := $(DEVICE_PATH)/gps
-TARGET_NO_RPC := true
-
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
+BOARD_DTBTOOL_ARGS := -2
 BOARD_KERNEL_SEPARATED_DT := true
-BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
 TARGET_KERNEL_SOURCE := kernel/motorola/msm8992
 TARGET_KERNEL_CONFIG := clark_defconfig
 TARGET_KERNEL_HEADER_ARCH := arm64
@@ -58,7 +54,6 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 TARGET_KERNEL_HAVE_EXFAT := true
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 earlyprintk=msm_hsl_uart,0xf991e000 utags.blkdev=/dev/block/bootdevice/by-name/utags utags.backup=/dev/block/bootdevice/by-name/utagsBackup
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset BOARD_RAMDISK_OFFSET --tags_offset BOARD_KERNEL_TAGS_OFFSET
 
 TARGET_NO_RADIOIMAGE := true
@@ -119,6 +114,9 @@ QCOM_BT_USE_BTNV := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 #BOARD_BLUEDROID_VENDOR_CONF := $(DEVICE_PATH)/bluetooth/libbt_vndcfg.txt
 BOARD_BLUETOOTH_BDROID_HCILP_INCLUDED := false
+
+# GPS
+TARGET_NO_RPC := true
 
 # QCRIL
 TARGET_RIL_VARIANT := caf
