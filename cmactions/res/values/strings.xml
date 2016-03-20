@@ -45,7 +45,7 @@
     <string name="action_wake_device">Wake device</string>
     <string name="action_doze">Pulse notification</string>
     <string name="action_launch_camera">Launch camera</string>
-    <string name="action_torch">Toggle torch</string>
+    <string name="action_torch">Toggle flashlight</string>
     <string name="action_custom">Custom</string>
 
     <string name="feedback_intensity_title">Haptic feedback intensity</string>
