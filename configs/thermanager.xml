@@ -1,49 +1,33 @@
 <thermanager>
 	<resources>
 		<!-- thermal zones msm8992 -->
-		<resource name="bms"  type="tz">/sys/class/thermal/thermal_zone0</resource>
-		<resource name="battery"  type="tz">/sys/class/thermal/thermal_zone1</resource>
+		<resource name="battery" type="tz">/sys/class/thermal/thermal_zone1</resource>
 
-		<resource name="chg_therm"  type="tz">/sys/class/thermal/thermal_zone2</resource>
-		<resource name="pchg_therm"  type="tz">/sys/class/thermal/thermal_zone3</resource>
+		<resource name="tsens_tz_sensor0"  type="tz">/sys/class/thermal/thermal_zone2</resource>
+		<resource name="tsens_tz_sensor1"  type="tz">/sys/class/thermal/thermal_zone3</resource>
+		<resource name="tsens_tz_sensor2"  type="tz">/sys/class/thermal/thermal_zone4</resource> <!-- pop_mem -->
+		<resource name="tsens_tz_sensor3"  type="tz">/sys/class/thermal/thermal_zone5</resource>
+		<resource name="tsens_tz_sensor4"  type="tz">/sys/class/thermal/thermal_zone6</resource>
+		<resource name="tsens_tz_sensor5"  type="tz">/sys/class/thermal/thermal_zone7</resource>
 
-		<resource name="tsens_tz_sensor0"  type="tz">/sys/class/thermal/thermal_zone4</resource>
-		<resource name="tsens_tz_sensor1"  type="tz">/sys/class/thermal/thermal_zone5</resource>
-		<resource name="tsens_tz_sensor2"  type="tz">/sys/class/thermal/thermal_zone6</resource>
-		<resource name="tsens_tz_sensor3"  type="tz">/sys/class/thermal/thermal_zone7</resource>
-		<resource name="tsens_tz_sensor4"  type="tz">/sys/class/thermal/thermal_zone8</resource>
-		<resource name="tsens_tz_sensor5"  type="tz">/sys/class/thermal/thermal_zone9</resource>
+		<resource name="tsens_tz_sensor7"  type="tz">/sys/class/thermal/thermal_zone8</resource> <!-- cpu0-1 -->
+		<resource name="tsens_tz_sensor9"  type="tz">/sys/class/thermal/thermal_zone9</resource> <!-- cpu2 -->
+		<resource name="tsens_tz_sensor10"  type="tz">/sys/class/thermal/thermal_zone10</resource> <!-- cpu3 -->
+		<resource name="tsens_tz_sensor11" type="tz">/sys/class/thermal/thermal_zone11</resource> <!-- gpu -->
+		<resource name="tsens_tz_sensor12" type="tz">/sys/class/thermal/thermal_zone12</resource> <!-- gpu -->
+		<resource name="tsens_tz_sensor13" type="tz">/sys/class/thermal/thermal_zone13</resource> <!-- cpu4 -->
+		<resource name="tsens_tz_sensor14" type="tz">/sys/class/thermal/thermal_zone14</resource> <!-- cpu5 -->
 
-		<resource name="tsens_tz_sensor7"  type="tz">/sys/class/thermal/thermal_zone10</resource>
-		<resource name="tsens_tz_sensor9"  type="tz">/sys/class/thermal/thermal_zone11</resource>
-		<resource name="tsens_tz_sensor10" type="tz">/sys/class/thermal/thermal_zone12</resource>
+		<resource name="pm8994_tz" type="tz">/sys/class/thermal/thermal_zone15</resource>
+		<resource name="msm_therm" type="tz">/sys/class/thermal/thermal_zone16</resource>
 
-		<resource name="tsens_tz_sensor11" type="tz">/sys/class/thermal/thermal_zone13</resource>
-		<resource name="tsens_tz_sensor12" type="tz">/sys/class/thermal/thermal_zone14</resource>
-
-		<resource name="tsens_tz_sensor13" type="tz">/sys/class/thermal/thermal_zone15</resource>
-		<resource name="tsens_tz_sensor14" type="tz">/sys/class/thermal/thermal_zone16</resource>
-
-		<resource name="pm8994_tz" type="tz">/sys/class/thermal/thermal_zone17</resource>
-		<resource name="msm_therm" type="tz">/sys/class/thermal/thermal_zone18</resource>
-
-		<resource name="emmc_therm" type="tz">/sys/class/thermal/thermal_zone19</resource>
-		<resource name="pa_therm0" type="tz">/sys/class/thermal/thermal_zone20</resource>
-		<resource name="pa_therm1" type="tz">/sys/class/thermal/thermal_zone21</resource>
-		<resource name="quiet_therm" type="tz">/sys/class/thermal/thermal_zone22</resource>
-
-		<resource name="THRM_57-0" type="tz">/sys/class/thermal/thermal_zone23</resource> <!-- THRM_57-0 -->
-		<resource name="THRM_57-1" type="tz">/sys/class/thermal/thermal_zone24</resource> <!-- THRM_57-1 -->
-		<resource name="THRM_53-0" type="tz">/sys/class/thermal/thermal_zone25</resource> <!-- THRM_53-0 -->
-		<resource name="THRM_53-1" type="tz">/sys/class/thermal/thermal_zone26</resource> <!-- THRM_53-1 -->
-		<resource name="THRM_53-2" type="tz">/sys/class/thermal/thermal_zone27</resource> <!-- THRM_53-2 -->
-		<resource name="THRM_53-3" type="tz">/sys/class/thermal/thermal_zone28</resource> <!-- THRM_53-3 -->
+		<resource name="emmc_therm" type="tz">/sys/class/thermal/thermal_zone17</resource>
+		<resource name="pa_therm0" type="tz">/sys/class/thermal/thermal_zone18</resource>
 
 		<resource name="temp-core" type="union">
-			<resource name="msm_therm" />
-			<resource name="emmc_therm" />
+<!--			<resource name="msm_therm" /> -->
+<!--			<resource name="emmc_therm" /> -->
 			<resource name="pa_therm0" />
-			<resource name="pa_therm1" />
 		</resource>
 
 		<resource name="temp-cluster-a53" type="union">
@@ -145,7 +129,6 @@
 		<mitigation level="1"><value resource="shutdown"/></mitigation>
 	</control>
 
-	<!--
 	<control name="backlight">
 		<mitigation level="off"><value resource="backlight">255</value></mitigation>
 		<mitigation level="1"><value resource="backlight">232</value></mitigation>
@@ -156,7 +139,6 @@
 		<mitigation level="6"><value resource="backlight">80</value></mitigation>
 		<mitigation level="7"><value resource="backlight">64</value></mitigation>
 	</control>
-	-->
 
 	<control name="gpu">
 		<mitigation level="off"><value resource="kgsl-3d0">600000000</value></mitigation>
@@ -198,7 +180,7 @@
 		<mitigation level="13"><value resource="shutdown" /></mitigation>
 	</control>
 
-	<!-- burn-out protection -->
+	<!-- BURN-OUT PROTECTION -->
 	<configuration sensor="temp-core">
 		<threshold>
 			<mitigation name="shutdown" level="off" />
@@ -208,7 +190,7 @@
 		</threshold>
 	</configuration>
 
-	<!-- USB  -->
+	<!-- USB -->
 	<configuration sensor="battery">
 		<threshold>
 			<mitigation name="usb" level="off" />
@@ -252,6 +234,7 @@
 		</threshold>
 	</configuration>
 
+	<!-- BATTERY PROTECTION -->
 	<configuration sensor="battery">
 		<threshold>
 			<mitigation name="battery_protect" level="off" />
@@ -302,7 +285,7 @@
 		</threshold>
 	</configuration>
 
-	<!-- modem -->
+	<!-- MODEM -->
 	<configuration sensor="pm8994_tz">
 		<threshold>
 			<mitigation name="modem" level="off" />
@@ -317,40 +300,32 @@
 		<threshold>
 			<mitigation name="cpu-a53" level="off" />
 		</threshold>
-		<threshold trigger="52600" clear="52000">
+		<threshold trigger="48000" clear="45000">
 			<mitigation name="cpu-a53" level="1" />
 		</threshold>
-		<threshold trigger="53600" clear="53200">
-			<mitigation name="cpu-a53" level="3" />
-		</threshold>
-		<threshold trigger="55500" clear="54000">
-			<mitigation name="cpu-a53" level="4" />
-		</threshold>
-		<threshold trigger="55500" clear="55000">
-			<mitigation name="cpu-a53" level="5" />
-		</threshold>
-		<threshold trigger="55900" clear="55500">
-			<mitigation name="cpu-a53" level="6" />
-		</threshold>
-		<threshold trigger="56300" clear="55900">
-			<mitigation name="cpu-a53" level="7" />
-		</threshold>
-		<threshold trigger="56800" clear="56300">
-			<mitigation name="cpu-a53" level="8" />
+		<threshold trigger="53000" clear="48000">
+			<mitigation name="cpu-a53" level="2" />
 		</threshold>
 	</configuration>
 
-	<!-- CPU A57 CLUSTER -->
+	<!-- CPU A53 CLUSTER -->
 	<configuration sensor="temp-cluster-a53">
 		<threshold>
 			<mitigation name="cpu-a53" level="off" />
 		</threshold>
 		<threshold trigger="78" clear="70">
-			<mitigation name="cpu-a53" level="2" />
-		</threshold>
-		<threshold trigger="84" clear="80">
 			<mitigation name="cpu-a53" level="4" />
 		</threshold>
+		<threshold trigger="84" clear="80">
+			<mitigation name="cpu-a53" level="5" />
+		</threshold>
+		<threshold trigger="104" clear="98">
+			<mitigation name="cpu-a53" level="7" />
+		</threshold>
+		<threshold trigger="110" clear="104">
+			<mitigation name="cpu-a53" level="8" />
+		</threshold>
+		<!-- shutdown -->
 		<threshold trigger="120" clear="100">
 			<mitigation name="cpu-a53" level="9" />
 		</threshold>
@@ -361,26 +336,11 @@
 		<threshold>
 			<mitigation name="cpu-a57" level="off" />
 		</threshold>
-		<threshold trigger="52900" clear="51700">
-			<mitigation name="cpu-a57" level="1" />
-		</threshold>
-		<threshold trigger="54200" clear="52900">
-			<mitigation name="cpu-a57" level="3" />
-		</threshold>
-		<threshold trigger="55400" clear="54200">
+		<threshold trigger="53000" clear="51000">
 			<mitigation name="cpu-a57" level="6" />
 		</threshold>
-		<threshold trigger="56000" clear="55400">
-			<mitigation name="cpu-a57" level="9" />
-		</threshold>
-		<threshold trigger="56600" clear="56000">
-			<mitigation name="cpu-a57" level="10" />
-		</threshold>
-		<threshold trigger="57600" clear="57200">
-			<mitigation name="cpu-a57" level="11" />
-		</threshold>
-		<threshold trigger="58500" clear="58000">
-			<mitigation name="cpu-a57" level="12" />
+		<threshold trigger="60000" clear="58000">
+			<mitigation name="cpu-a57" level="7" />
 		</threshold>
 	</configuration>
 
@@ -389,15 +349,21 @@
 		<threshold>
 			<mitigation name="cpu-a57" level="off" />
 		</threshold>
-		<threshold trigger="78" clear="70">
+		<threshold trigger="70" clear="55">
+			<mitigation name="cpu-a57" level="6" />
+		</threshold>
+		<threshold trigger="98" clear="92">
 			<mitigation name="cpu-a57" level="8" />
 		</threshold>
-		<threshold trigger="84" clear="80">
+		<threshold trigger="104" clear="98">
 			<mitigation name="cpu-a57" level="10" />
 		</threshold>
+		<threshold trigger="110" clear="104">
+			<mitigation name="cpu-a57" level="12" />
+		</threshold>
+		<!-- shutdown -->
 		<threshold trigger="120" clear="100">
 			<mitigation name="cpu-a57" level="13" />
 		</threshold>
 	</configuration>
 </thermanager>
-
