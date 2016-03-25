@@ -10,4 +10,4 @@ allow batt_health cache_file:dir { write remove_name add_name };
 allow batt_health cache_file:file { create unlink open write append setattr };
 allow batt_health self:capability { dac_read_search dac_override };
 allow batt_health battery_data_file:dir { search write add_name remove_name };
-allow batt_health battery_data_file:file { open write create read append getattr setattr rename };
+allow batt_health battery_data_file:file { open write create read append getattr setattr rename unlink };

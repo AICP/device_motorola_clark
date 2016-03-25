@@ -5,6 +5,6 @@ allow rild sensors_device:chr_file { ioctl open read write };
 allow rild wpa_socket:sock_file write;
 allow rild block_device:dir search;
 allow rild wpa:unix_dgram_socket sendto;
-allow rild firmware_file:dir { read open search };
+allow rild fsg_file:dir { read open search };
 allow rild persist_file:dir search;
 allow rild persist_file:file { getattr read write open };

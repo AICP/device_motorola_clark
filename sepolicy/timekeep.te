@@ -1,0 +1,5 @@
+type timekeep, domain;
+type timekeep_exec, exec_type, file_type;
+init_daemon_domain(timekeep)
+
+allow timekeep self:capability sys_time;

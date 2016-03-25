@@ -17,5 +17,8 @@ allow adspd system_prop:property_service set;
 
 allow adspd adspd_socket:sock_file { read write };
 
+allow adspd audio_device:dir search;
+allow adspd audio_device:chr_file { read write open ioctl };
+
 # TODO: Just use generic sysfs for now
 allow adspd sysfs:file write;

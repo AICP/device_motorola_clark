@@ -1,0 +1,8 @@
+type motosh, domain;
+type motosh_exec, exec_type, file_type;
+init_daemon_domain(motosh)
+
+allow motosh sensors_device:chr_file { write open ioctl };
+allow motosh property_socket:sock_file write;
+allow motosh init:unix_stream_socket connectto;
+allow motosh system_prop:property_service set;

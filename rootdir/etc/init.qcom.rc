@@ -574,12 +574,6 @@ service motosh /system/bin/motosh boot
     group compass misc input mot_tcmd
     oneshot
 
-service hw_revs /system/bin/hardware_revisions.sh
-    class late_start
-    user system
-    group system
-    oneshot
-
 service adspd /system/bin/adspd
    class main
    socket adspdsock stream 0660 system audio
