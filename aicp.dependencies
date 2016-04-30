@@ -1,0 +1,32 @@
+[
+  {
+    "repository": "AICP/kernel_motorola_msm8992",
+    "target_path": "kernel/motorola/msm8992",
+    "branch":      "n7.1"
+  },
+  {
+    "repository": "CyanogenMod/android_device_qcom_common",
+    "target_path": "device/qcom/common",
+    "branch":      "cm-14.1"
+  },
+  {
+    "repository": "CyanogenMod/android_hardware_sony_thermanager",
+    "target_path": "hardware/sony/thermanager",
+    "branch":      "cm-14.1"
+  },
+  {
+    "repository": "CyanogenMod/android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings",
+    "branch":      "cm-14.1"
+  },
+  {
+    "repository": "AICP/proprietary_vendor_motorola",
+    "target_path": "vendor/motorola",
+    "branch":      "n7.1"
+  },
+  {
+    "repository": "TheMuppets/proprietary_vendor_qcom_binaries",
+    "target_path": "vendor/qcom/binaries",
+    "branch":      "cm-14.1"
+  }
+]
