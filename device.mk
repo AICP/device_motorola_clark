@@ -214,11 +214,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     thermanager
 
-# Timekeep
-PRODUCT_PACKAGES += \
-    timekeep \
-    TimeKeep
-
 # Wifi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \

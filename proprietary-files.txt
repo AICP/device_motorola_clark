@@ -486,7 +486,6 @@ lib/libmotext_inf.so
 -lib/libril.so
 lib/libqmimotext.so
 lib64/libadropbox.so
--vendor/lib/libtime_genoff.so
 vendor/lib/libimscamera_jni.so
 vendor/lib/libimsmedia_jni.so
 vendor/lib/liblqe.so
@@ -511,6 +510,12 @@ vendor/lib/libsubsystem_control.so
 vendor/lib/libSubSystemShutdown.so
 lib64/hw/sensorhub.msm8992.so
 vendor/lib/libsensor1.so
+
+# Time services
+-app/TimeService/TimeService.apk
+bin/time_daemon
+vendor/lib/libTimeService.so
+-vendor/lib/libtime_genoff.so
 
 # Wat - weird files
 bin/ssr_setup
