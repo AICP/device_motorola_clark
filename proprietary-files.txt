@@ -561,7 +561,6 @@ bin/diag_mdlog-getlogs
 bin/diag_mdlog-wrap
 bin/diag_qshrink4_daemon
 bin/port-bridge
-bin/rild
 bin/test_diag
 bin/ipacm-diag
 bin/netmgrd
