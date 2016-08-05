@@ -439,4 +439,7 @@
     <!-- Default LED off time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOff">1000</integer>
 
+    <!-- Enable blur support -->
+    <bool name="config_ui_blur_enabled">true</bool>
+
 </resources>
