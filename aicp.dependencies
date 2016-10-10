@@ -5,6 +5,11 @@
     "branch":      "n7.0"
   },
   {
+    "repository": "CyanogenMod/android_device_qcom_common",
+    "target_path": "device/qcom/common",
+    "branch":      "cm-14.0"
+  },
+  {
     "repository": "CyanogenMod/android_hardware_sony_thermanager",
     "target_path": "hardware/sony/thermanager",
     "branch":      "cm-14.0"
