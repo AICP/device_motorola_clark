@@ -291,6 +291,8 @@ on property:sys.boot_completed=1
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
+    restart ril-daemon
+
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
 
@@ -441,6 +443,7 @@ service ril-daemon2 /system/bin/rild -c 2
     socket rild2 stream 660 root radio
     socket rild-debug2 stream 660 radio system
     user root
+    disabled
     group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log wakelock
     writepid /dev/cpuset/system-background/tasks
 
@@ -577,3 +580,6 @@ service thermanager /system/bin/thermanager /system/etc/thermanager.xml
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
+
+on property:persist.radio.multisim.config=dsds
+    start ril-daemon2
