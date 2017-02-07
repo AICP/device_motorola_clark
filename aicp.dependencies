@@ -5,17 +5,17 @@
     "branch":      "n7.1"
   },
   {
-    "repository": "CyanogenMod/android_device_qcom_common",
+    "repository": "LineageOS/android_device_qcom_common",
     "target_path": "device/qcom/common",
     "branch":      "cm-14.1"
   },
   {
-    "repository": "CyanogenMod/android_hardware_sony_thermanager",
+    "repository": "LineageOS/android_hardware_sony_thermanager",
     "target_path": "hardware/sony/thermanager",
     "branch":      "cm-14.1"
   },
   {
-    "repository": "CyanogenMod/android_packages_resources_devicesettings",
+    "repository": "LineageOS/android_packages_resources_devicesettings",
     "target_path": "packages/resources/devicesettings",
     "branch":      "cm-14.1"
   },
